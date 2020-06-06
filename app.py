@@ -5,23 +5,23 @@ from flask import Flask, render_template, request, jsonify
 from pusher import Pusher
 import json
 import os
-
+from k import kx
 # create flask app
 app = Flask(__name__)
 
 # configure pusher object
 pusher = Pusher(
-  app_id = "1014141",
-  key = "6b3b9852a6b722cda784",
-  secret = "b43a040892c5ed80ecdc",
-  cluster = "us2",
+  app_id = kx[0],
+  key = kx[1],
+  secret = kx[2],
+  cluster = kx[3],
   ssl=True
 )
 
 # index route, shows index.html view
 @app.route('/')
 def index():
-  return render_template('index.html')
+  return render_template('index.html', kx = kx)
 
 # endpoint for storing todo item
 @app.route('/add-todo', methods = ['POST'])
