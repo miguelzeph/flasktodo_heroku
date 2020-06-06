@@ -21,7 +21,7 @@ pusher = Pusher(
 # index route, shows index.html view
 @app.route('/')
 def index():
-  return render_template('index.html', kx = kx)
+  return render_template('index.html')
 
 # endpoint for storing todo item
 @app.route('/add-todo', methods = ['POST'])
