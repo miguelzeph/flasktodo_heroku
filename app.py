@@ -21,7 +21,7 @@ app = Flask(__name__)
 )"""
 
 pusher = Pusher(
-  app_id = str(os.environ['APP_id']),
+  app_id = str(os.environ['APP_ID']),
   key = str(os.environ['KEY']),
   secret = str(os.environ['KEYSECRET']),
   cluster = str(os.environ['KEYCLUSTER']),
