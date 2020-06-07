@@ -5,20 +5,36 @@ from flask import Flask, render_template, request, jsonify
 from pusher import Pusher
 import json
 import os
-#from k import kx
+
 
 
 # create flask app
 app = Flask(__name__)
 
-# configure pusher object
-"""pusher = Pusher(
-  app_id = kx[0],
-  key = kx[1],
-  secret = kx[2],
-  cluster = kx[3],
+
+
+######configure pusher object#########
+####### MODO NÃO SEGURO ##############
+# SE QUISER RODAR LOCAL, só desmarcar...
+
+"""
+from key import kx
+
+pusher = Pusher(
+  app_id = keys[0],
+  key = keys[1],
+  secret = keys[2],
+  cluster = keys[3],
   ssl=True
 )"""
+
+
+#############configure pusher object####################
+#################### MODO SEGURO #######################
+########## NESTE MODO NÓS ADD VARS NO HEROKU#############
+#### ENTÃO CHAMAMOS AS VARS DIRETO DO SERVIDOR HEROKU####
+#OBS: Se tentar rodar aqui no LOCAL não irá funcionar...
+#pois essas variáveis estão no SERVIDOR!!!!!
 
 pusher = Pusher(
   app_id = str(os.environ['APP_ID']),
