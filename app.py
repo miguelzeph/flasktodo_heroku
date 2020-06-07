@@ -8,11 +8,6 @@ import os
 #from k import kx
 
 
-
-from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['KEY'],os.environ['CLUSTER'],os.environ['APP_ID'],os.environ['SECRET'])
-
-
 # create flask app
 app = Flask(__name__)
 
@@ -26,10 +21,10 @@ app = Flask(__name__)
 )"""
 
 pusher = Pusher(
-  app_id = APP_id,
-  key = KEY,
-  secret = SECRET,
-  cluster = CLUSTER,
+  app_id = str(os.environ['APP_id']),
+  key = str(os.environ['KEY']),
+  secret = str(os.environ['KEYSECRET']),
+  cluster = str(os.environ['KEYCLUSTER']),
   ssl=True
 )
 
