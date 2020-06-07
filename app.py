@@ -23,8 +23,8 @@ app = Flask(__name__)
 pusher = Pusher(
   app_id = str(os.environ['APP_ID']),
   key = str(os.environ['KEY']),
-  secret = str(os.environ['KEYSECRET']),
-  cluster = str(os.environ['KEYCLUSTER']),
+  secret = str(os.environ['SECRET']),
+  cluster = str(os.environ['CLUSTER']),
   ssl=True
 )
 
