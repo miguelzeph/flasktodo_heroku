@@ -12,7 +12,7 @@ import os
 app = Flask(__name__)
 
 
-
+#####################################################
 ######configure pusher object#########
 ####### MODO NÃO SEGURO ##############
 
@@ -53,6 +53,7 @@ except:# Não DEU CERTO? ENTÃO RODA LOCAL!!!!
     cluster = keys[3],
     ssl=True
   )
+##################################################
 
 
 
