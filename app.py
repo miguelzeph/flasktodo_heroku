@@ -6,17 +6,33 @@ from pusher import Pusher
 import json
 import os
 from k import kx
+
+
+
+from boto.s3.connection import S3Connection
+s3 = S3Connection(os.environ['KEY'],os.environ['CLUSTER'],os.environ['APP_ID'],os.environ['SECRET'])
+
+
 # create flask app
 app = Flask(__name__)
 
 # configure pusher object
-pusher = Pusher(
+"""pusher = Pusher(
   app_id = kx[0],
   key = kx[1],
   secret = kx[2],
   cluster = kx[3],
   ssl=True
+)"""
+
+pusher = Pusher(
+  app_id = APP_id,
+  key = KEY,
+  secret = SECRET,
+  cluster = CLUSTER,
+  ssl=True
 )
+
 
 # index route, shows index.html view
 @app.route('/')

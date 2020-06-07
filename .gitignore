@@ -8,6 +8,7 @@ __pycache__/
 
 #ke
 k.py
+.env_example
 
 # Distribution / packaging
 .Python
