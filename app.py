@@ -15,10 +15,9 @@ app = Flask(__name__)
 
 ######configure pusher object#########
 ####### MODO NÃO SEGURO ##############
-# SE QUISER RODAR LOCAL, só desmarcar...
 
 """
-from key import kx
+from key import keys
 
 pusher = Pusher(
   app_id = keys[0],
@@ -36,13 +35,26 @@ pusher = Pusher(
 #OBS: Se tentar rodar aqui no LOCAL não irá funcionar...
 #pois essas variáveis estão no SERVIDOR!!!!!
 
-pusher = Pusher(
-  app_id = str(os.environ['APP_ID']),
-  key = str(os.environ['KEY']),
-  secret = str(os.environ['SECRET']),
-  cluster = str(os.environ['CLUSTER']),
-  ssl=True
-)
+try:#RODAR NO SERVIDOR PRIMEIRO
+  pusher = Pusher(
+    app_id = str(os.environ['APP_ID']),
+    key = str(os.environ['KEY']),
+    secret = str(os.environ['SECRET']),
+    cluster = str(os.environ['CLUSTER']),
+    ssl=True
+  )
+except:# Não DEU CERTO? ENTÃO RODA LOCAL!!!!
+  
+  from key import keys
+  pusher = Pusher(
+    app_id = keys[0],
+    key = keys[1],
+    secret = keys[2],
+    cluster = keys[3],
+    ssl=True
+  )
+
+
 
 
 # index route, shows index.html view
